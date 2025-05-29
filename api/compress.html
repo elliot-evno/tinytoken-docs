@@ -360,14 +360,61 @@
 
             <h3><span class="status-200">200 OK</span> Success</h3>
             <pre class="code-block"><code class="language-json">{
-  "original_text": "The original input text",
-  "shortened_text": "The compressed text",
-  "original_tokens": 150,
-  "shortened_tokens": 89,
-  "reduction_percent": 40.7,
-  "similarity_score": 0.97,
-  "processing_time_ms": 1250
+  "compressed_text": "hello there how are you doing",
+  "original_length": 7,
+  "compressed_length": 6,
+  "compression_ratio": 0.143,
+  "quality_score": 0.96,
+  "auto_calculated_quality": 0.954,
+  "processing_time_ms": 92
 }</code></pre>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>compressed_text</code></td>
+                        <td>string</td>
+                        <td>The compressed version of the input text</td>
+                    </tr>
+                    <tr>
+                        <td><code>original_length</code></td>
+                        <td>integer</td>
+                        <td>Length of the original text</td>
+                    </tr>
+                    <tr>
+                        <td><code>compressed_length</code></td>
+                        <td>integer</td>
+                        <td>Length of the compressed text</td>
+                    </tr>
+                    <tr>
+                        <td><code>compression_ratio</code></td>
+                        <td>float</td>
+                        <td>Ratio of compression (lower is better)</td>
+                    </tr>
+                    <tr>
+                        <td><code>quality_score</code></td>
+                        <td>float</td>
+                        <td>Semantic similarity score between original and compressed text (0-1)</td>
+                    </tr>
+                    <tr>
+                        <td><code>auto_calculated_quality</code></td>
+                        <td>float</td>
+                        <td>Quality threshold automatically calculated by the system</td>
+                    </tr>
+                    <tr>
+                        <td><code>processing_time_ms</code></td>
+                        <td>integer</td>
+                        <td>Time taken to process the request in milliseconds</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <h3>Error Responses</h3>
 
