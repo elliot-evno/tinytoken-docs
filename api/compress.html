@@ -263,7 +263,7 @@
 
         <div class="content">
             <h2 id="overview">Overview</h2>
-            <p>The <code>/compress</code> endpoint compresses text while preserving semantic meaning using similarity-based analysis.</p>
+            <p>The <code>/compress</code> endpoint compresses text while preserving semantic meaning.</p>
 
             <h2 id="endpoint">Endpoint Details</h2>
             <div class="endpoint-info">
@@ -293,7 +293,7 @@
                     <tr>
                         <td><code>text</code></td>
                         <td>string</td>
-                        <td>Text to compress (max 100,000 characters)</td>
+                        <td>Text to compress</td>
                     </tr>
                 </tbody>
             </table>
@@ -351,61 +351,81 @@
 
             <h3><span class="status-200">200 OK</span> Success</h3>
             <div class="code-block">{
+  <br>
   "original_text": "The original input text",
+  <br>
   "shortened_text": "The compressed text",
+  <br>
   "original_tokens": 150,
+  <br>
   "shortened_tokens": 89,
+  <br>
   "reduction_percent": 40.7,
+  <br>
   "similarity_score": 0.97,
+  <br>
   "processing_time_ms": 1250
+  <br>
 }</div>
 
             <h3>Error Responses</h3>
 
             <h4><span class="status-400">400 Bad Request</span></h4>
             <div class="code-block">{
+  <br>
   "error": "Missing required field: text",
+  <br>
   "code": "MISSING_FIELD"
+  <br>
 }</div>
             <p><strong>Error codes:</strong> <code>INVALID_JSON</code>, <code>MISSING_FIELD</code>, <code>TEXT_TOO_LONG</code>, <code>EMPTY_TEXT</code></p>
 
             <h4><span class="status-401">401 Unauthorized</span></h4>
             <div class="code-block">{
+  <br>
   "error": "Invalid API key",
+  <br>
   "code": "INVALID_AUTH"
+  <br>
 }</div>
 
             <h4><span class="status-500">500 Internal Server Error</span></h4>
             <div class="code-block">{
-  "error": "Error details",
+  <br>
+"error": "Error details",
+  <br>
   "code": "INTERNAL_ERROR"
+  <br>
 }</div>
 
             <h2 id="usage">Usage Examples</h2>
 
             <h3>cURL</h3>
             <div class="code-block">curl -X POST https://api.tinytoken.org/compress \
+  <br>
   -H "Content-Type: application/json" \
+  <br>
   -H "Authorization: Bearer your_api_key_here" \
+  <br>
   -d '{"text": "Your text here...", "auto_quality": true}'</div>
 
             <h3>Python</h3>
-            <div class="code-block">import requests
-
-response = requests.post(
-    'https://api.tinytoken.org/compress',
-    headers={
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer your_api_key_here'
-    },
+            <div class="code-block">import requests<br>
+<br>
+response = requests.post('https://api.tinytoken.org/compress',<br>
+    headers={'Content-Type': 'application/json',
+        'Authorization': 'Bearer your_api_key_here'},<br>
+    
     json={
         'text': 'Your text here...',
         'auto_quality': True
     }
 )
-
+<br>
 result = response.json()
-print(f"Reduced from {result['original_tokens']} to {result['shortened_tokens']} tokens")</div>
+<br>
+<br>
+print("result")</div>
         </div>
 
     </div>
