@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyToken SDK Documentation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 32px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #000;
+        }
+
+        .content {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-top: 32px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            color: #000;
+            margin-bottom: 16px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #ccc;
+            padding: 16px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            color: #000;
+        }
+
+        th {
+            background: #f9fafb;
+            font-weight: 500;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            color: #000;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            color: #000;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .content {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TinyToken SDK</h1>
+            <div class="subtitle">Python SDK for Text Compression API</div>
+        </header>
+
+        <div class="content">
+            <h2>Installation</h2>
+            <p>Install the SDK using pip:</p>
+            <pre class="code-block"><code class="language-bash">pip install tinytoken-sdk</code></pre>
+
+            <h2>Requirements</h2>
+            <ul>
+                <li>Python 3.7 or higher</li>
+                <li>requests >= 2.20.0</li>
+            </ul>
+
+            <h2>Quick Start</h2>
+            <p>Here's a simple example of how to use the SDK:</p>
+            <pre class="code-block"><code class="language-python">import tinytoken
+
+# Simple usage
+result = tinytoken.compress("Your text here")
+print(result)
+
+# Using the client class
+client = tinytoken.TinyToken()
+result = client.compress("Your text here")
+print(result)</code></pre>
+
+            <h2>Response Format</h2>
+            <p>The compress method returns a dictionary containing:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>original_text</code></td>
+                        <td>string</td>
+                        <td>The input text</td>
+                    </tr>
+                    <tr>
+                        <td><code>shortened_text</code></td>
+                        <td>string</td>
+                        <td>The compressed version</td>
+                    </tr>
+                    <tr>
+                        <td><code>original_tokens</code></td>
+                        <td>integer</td>
+                        <td>Number of tokens in original text</td>
+                    </tr>
+                    <tr>
+                        <td><code>shortened_tokens</code></td>
+                        <td>integer</td>
+                        <td>Number of tokens in compressed text</td>
+                    </tr>
+                    <tr>
+                        <td><code>reduction_percent</code></td>
+                        <td>float</td>
+                        <td>Percentage of token reduction</td>
+                    </tr>
+                    <tr>
+                        <td><code>similarity_score</code></td>
+                        <td>float</td>
+                        <td>Semantic similarity between original and compressed text</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Version</h2>
+            <p>Current version: 0.1.2</p>
+
+            <div class="footer">
+                <p>For more information, visit the <a href="https://github.com/elliot-evno/tinytoken-python-sdk">GitHub repository</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html> 

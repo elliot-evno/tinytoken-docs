@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compress Endpoint - TinyToken API</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -166,10 +167,10 @@
         }
 
         .code-block {
-            background: #f8fafc;
-            color: #000;
+            background: #2d2d2d;
+            color: #ccc;
             padding: 16px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #444;
             border-radius: 8px;
             overflow-x: auto;
             margin: 16px 0;
@@ -222,10 +223,6 @@
             font-weight: 500;
         }
 
- 
-
-    
-
         .footer {
             text-align: center;
             margin-top: 32px;
@@ -259,8 +256,6 @@
             <div class="subtitle">Text compression API documentation</div>
         </header>
 
-    
-
         <div class="content">
             <h2 id="overview">Overview</h2>
             <p>The <code>/compress</code> endpoint compresses text while preserving semantic meaning.</p>
@@ -276,7 +271,7 @@
             </div>
 
             <h2 id="auth">Authentication</h2>
-            <div class="code-block">Authorization: Bearer your_api_key_here</div>
+            <pre class="code-block"><code class="language-http">Authorization: Bearer your_api_key_here</code></pre>
 
             <h2 id="parameters">Request Parameters</h2>
             
@@ -331,103 +326,87 @@
             <h2 id="examples">Request Examples</h2>
 
             <h3>Basic compression</h3>
-            <div class="code-block">{
+            <pre class="code-block"><code class="language-json">{
   "text": "Your text here..."
-}</div>
+}</code></pre>
 
             <h3>With auto quality</h3>
-            <div class="code-block">{
+            <pre class="code-block"><code class="language-json">{
   "text": "Your text here...",
   "auto_quality": true
-}</div>
+}</code></pre>
 
             <h3>With specific quality</h3>
-            <div class="code-block">{
+            <pre class="code-block"><code class="language-json">{
   "text": "Your text here...",
   "quality": 0.95
-}</div>
+}</code></pre>
 
             <h2 id="responses">Response</h2>
 
             <h3><span class="status-200">200 OK</span> Success</h3>
-            <div class="code-block">{
-  <br>
+            <pre class="code-block"><code class="language-json">{
   "original_text": "The original input text",
-  <br>
   "shortened_text": "The compressed text",
-  <br>
   "original_tokens": 150,
-  <br>
   "shortened_tokens": 89,
-  <br>
   "reduction_percent": 40.7,
-  <br>
   "similarity_score": 0.97,
-  <br>
   "processing_time_ms": 1250
-  <br>
-}</div>
+}</code></pre>
 
             <h3>Error Responses</h3>
 
             <h4><span class="status-400">400 Bad Request</span></h4>
-            <div class="code-block">{
-  <br>
+            <pre class="code-block"><code class="language-json">{
   "error": "Missing required field: text",
-  <br>
   "code": "MISSING_FIELD"
-  <br>
-}</div>
+}</code></pre>
             <p><strong>Error codes:</strong> <code>INVALID_JSON</code>, <code>MISSING_FIELD</code>, <code>TEXT_TOO_LONG</code>, <code>EMPTY_TEXT</code></p>
 
             <h4><span class="status-401">401 Unauthorized</span></h4>
-            <div class="code-block">{
-  <br>
+            <pre class="code-block"><code class="language-json">{
   "error": "Invalid API key",
-  <br>
   "code": "INVALID_AUTH"
-  <br>
-}</div>
+}</code></pre>
 
             <h4><span class="status-500">500 Internal Server Error</span></h4>
-            <div class="code-block">{
-  <br>
-"error": "Error details",
-  <br>
+            <pre class="code-block"><code class="language-json">{
+  "error": "Error details",
   "code": "INTERNAL_ERROR"
-  <br>
-}</div>
+}</code></pre>
 
             <h2 id="usage">Usage Examples</h2>
 
             <h3>cURL</h3>
-            <div class="code-block">curl -X POST https://api.tinytoken.org/compress \
-  <br>
+            <pre class="code-block"><code class="language-bash">curl -X POST https://api.tinytoken.org/compress \
   -H "Content-Type: application/json" \
-  <br>
   -H "Authorization: Bearer your_api_key_here" \
-  <br>
-  -d '{"text": "Your text here...", "auto_quality": true}'</div>
+  -d '{"text": "Your text here...", "auto_quality": true}'</code></pre>
 
             <h3>Python</h3>
-            <div class="code-block">import requests<br>
-<br>
-response = requests.post('https://api.tinytoken.org/compress',<br>
-    headers={'Content-Type': 'application/json',
-        'Authorization': 'Bearer your_api_key_here'},<br>
-    
+            <pre class="code-block"><code class="language-python">import requests
+
+response = requests.post('https://api.tinytoken.org/compress',
+    headers={
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer your_api_key_here'
+    },
     json={
         'text': 'Your text here...',
         'auto_quality': True
     }
 )
-<br>
+
 result = response.json()
-<br>
-<br>
-print("result")</div>
+print(result)</code></pre>
         </div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-http.min.js"></script>
 </body>
 </html> 
