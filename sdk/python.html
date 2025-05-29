@@ -29,7 +29,6 @@
         header {
             text-align: center;
             margin-bottom: 32px;
-            padding-top: 32px;
         }
 
         h1 {
@@ -132,10 +131,46 @@
                 font-size: 2rem;
             }
         }
+
+        .breadcrumb {
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb a {
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: none;
+            background: #f8fafc;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .breadcrumb a::before {
+            content: "←";
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Back to Documentation Home</a>
+        </div>
+
         <header>
             <h1>TinyToken SDK</h1>
             <div class="subtitle">Python SDK for Text Compression API</div>
