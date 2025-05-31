@@ -184,76 +184,53 @@
             <h2>Requirements</h2>
             <ul>
                 <li>Node.js 14.0 or higher</li>
-                <li>axios >= 1.6.0</li>
+                <li>Built-in TypeScript declarations included</li>
             </ul>
 
             <h2>Quick Start</h2>
-            <p>Here's a simple example of how to use the SDK:</p>
-            <pre class="code-block"><code class="language-javascript">import TinyToken from 'tinytoken';
+            <p>First, get your API key from <a href="https://tinytoken.org">tinytoken.org</a>. Here's how to use the SDK:</p>
+            <pre class="code-block"><code class="language-javascript">import { compress, TinyToken } from 'tinytoken-sdk';
 
-// Create a client instance
-const client = new TinyToken();
+// Method 1: Using the standalone function
+const result = await compress("Your text here", { 
+  apiKey: "your-api-key-here" 
+});
+console.log(result);
 
-// Compress text
+// Method 2: Using the TinyToken class (recommended)
+const client = new TinyToken("your-api-key-here");
 const result = await client.compress("Your text here");
 console.log(result);
 
-// TypeScript usage
-import TinyToken, { CompressResponse } from 'tinytoken';
-
-const client = new TinyToken();
-const result: CompressResponse = await client.compress("Your text here");
+// Environment variables (recommended for security)
+const client = new TinyToken(process.env.TINYTOKEN_API_KEY);
+const result = await client.compress("Your text here", { quality: 0.8 });
 console.log(result);</code></pre>
 
             <h2>Response Format</h2>
-            <p>The compress method returns a Promise that resolves to an object containing:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>original_text</code></td>
-                        <td>string</td>
-                        <td>The input text</td>
-                    </tr>
-                    <tr>
-                        <td><code>shortened_text</code></td>
-                        <td>string</td>
-                        <td>The compressed version</td>
-                    </tr>
-                    <tr>
-                        <td><code>original_tokens</code></td>
-                        <td>number</td>
-                        <td>Number of tokens in original text</td>
-                    </tr>
-                    <tr>
-                        <td><code>shortened_tokens</code></td>
-                        <td>number</td>
-                        <td>Number of tokens in compressed text</td>
-                    </tr>
-                    <tr>
-                        <td><code>reduction_percent</code></td>
-                        <td>number</td>
-                        <td>Percentage of token reduction</td>
-                    </tr>
-                    <tr>
-                        <td><code>similarity_score</code></td>
-                        <td>number</td>
-                        <td>Semantic similarity between original and compressed text</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>The compress method returns a Promise that resolves to a compressed string.</p>
+
+            <h2>Error Handling</h2>
+            <p>The SDK throws <code>TinyTokenError</code> for various error conditions:</p>
+            <pre class="code-block"><code class="language-javascript">import { TinyToken, TinyTokenError } from 'tinytoken-sdk';
+
+try {
+  const client = new TinyToken("your-api-key-here");
+  const result = await client.compress("Your text here");
+  console.log(result);
+} catch (error) {
+  if (error instanceof TinyTokenError) {
+    console.error('TinyToken Error:', error.message);
+  } else {
+    console.error('Unexpected error:', error);
+  }
+}</code></pre>
 
             <h2>Version</h2>
-            <p>Current version: 0.1.3</p>
+            <p>Current version: 0.1.4</p>
 
             <div class="footer">
-                <p>For more information, visit the <a href="https://github.com/elliot-evno/tinytoken-js-sdk">GitHub repository</a></p>
+                <p>For more information, visit the <a href="https://www.npmjs.com/package/tinytoken">npm package</a> or <a href="https://github.com/tinytoken/sdk">GitHub repository</a></p>
             </div>
         </div>
     </div>

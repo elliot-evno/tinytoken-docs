@@ -188,67 +188,28 @@
             </ul>
 
             <h2>Quick Start</h2>
-            <p>Here's a simple example of how to use the SDK:</p>
+            <p>First, get your API key from <a href="https://tinytoken.org">tinytoken.org</a>. Here's how to use the SDK:</p>
             <pre class="code-block"><code class="language-python">import tinytoken
 
-# Simple usage
-result = tinytoken.compress("Your text here")
+# Using the client class with API key
+client = tinytoken.TinyToken("your-api-key-here")
+result = client.compress("Your text here")
 print(result)
 
-# Using the client class
-client = tinytoken.TinyToken()
+# Using environment variables (recommended for security)
+import os
+client = tinytoken.TinyToken(os.getenv("TINYTOKEN_API_KEY"))
 result = client.compress("Your text here")
 print(result)</code></pre>
 
             <h2>Response Format</h2>
-            <p>The compress method returns a dictionary containing:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>original_text</code></td>
-                        <td>string</td>
-                        <td>The input text</td>
-                    </tr>
-                    <tr>
-                        <td><code>shortened_text</code></td>
-                        <td>string</td>
-                        <td>The compressed version</td>
-                    </tr>
-                    <tr>
-                        <td><code>original_tokens</code></td>
-                        <td>integer</td>
-                        <td>Number of tokens in original text</td>
-                    </tr>
-                    <tr>
-                        <td><code>shortened_tokens</code></td>
-                        <td>integer</td>
-                        <td>Number of tokens in compressed text</td>
-                    </tr>
-                    <tr>
-                        <td><code>reduction_percent</code></td>
-                        <td>float</td>
-                        <td>Percentage of token reduction</td>
-                    </tr>
-                    <tr>
-                        <td><code>similarity_score</code></td>
-                        <td>float</td>
-                        <td>Semantic similarity between original and compressed text</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>The compress method returns a compressed string.</p>
 
             <h2>Version</h2>
             <p>Current version: 0.1.2</p>
 
             <div class="footer">
-                <p>For more information, visit the <a href="https://github.com/elliot-evno/tinytoken-python-sdk">GitHub repository</a></p>
+                <p>For more information, visit the <a href="https://pypi.org/project/tinytoken-sdk/">PyPI package</a> or <a href="https://github.com/elliot-evno/tinytoken-python-sdk">GitHub repository</a></p>
             </div>
         </div>
     </div>
