@@ -189,7 +189,7 @@
 
             <h2>Quick Start</h2>
             <p>First, get your API key from <a href="https://tinytoken.org">tinytoken.org</a>. Here's how to use the SDK:</p>
-            <pre class="code-block"><code class="language-javascript">import { compress, TinyToken } from 'tinytoken-sdk';
+            <pre class="code-block"><code class="language-javascript">import { compress, TinyToken } from 'tinytoken';
 
 // Method 1: Using the standalone function
 const result = await compress("Your text here", { 
@@ -212,7 +212,7 @@ console.log(result);</code></pre>
 
             <h2>Error Handling</h2>
             <p>The SDK throws <code>TinyTokenError</code> for various error conditions:</p>
-            <pre class="code-block"><code class="language-javascript">import { TinyToken, TinyTokenError } from 'tinytoken-sdk';
+            <pre class="code-block"><code class="language-javascript">import { TinyToken, TinyTokenError } from 'tinytoken';
 
 try {
   const client = new TinyToken("your-api-key-here");
